@@ -22,6 +22,7 @@ bool prime(int n, int i=2)
     {
         return prime(n, i+1);
     }
+
 }
     int main ()
     {
