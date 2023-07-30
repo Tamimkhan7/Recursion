@@ -12,46 +12,49 @@ using namespace __gnu_pbds;
 #define all(x) x.begin(), x.end()
 #define nl '\n'
 #define mod 1000000007
-typedef long long int ll;
-typedef unsigned long long int llu;
-void inserts(vector<int> &v, int temp)
+void inserts(stack<int> &v, int temp)
 {
-    if (v.size() == 0 || v[v.size() - 1] <= temp)
+    if (v.size() == 0 || v.top() <= temp)
     {
-        v.push_back(temp);
+        v.push(temp);
         return;
     }
-    int val = v[v.size() - 1];
-    v.pop_back();
+    int val = v.top();
+    v.pop();
     inserts(v, temp);
-    v.push_back(val);
+    v.push(val);
 }
-void sorts(vector<int> &v)
+void sorts(stack<int> &v)
 {
     if (v.size() == 1)
         return;
-    int temp = v[v.size() - 1];
-    v.pop_back();
-    sorts(v);
 
+    int temp = v.top();
+    v.pop();
+    sorts(v);
     inserts(v, temp);
+}
+void print(stack<int> &v)
+{
+    if (v.empty())
+        return;
+
+    int x = v.top();
+    v.pop();
+    print(v);
+    cout << x << " ";
 }
 int main()
 {
-    faster;
     int n;
     cin >> n;
-    vector<int> v;
+    stack<int> v;
     int a;
     for (int i = 0; i < n; i++)
     {
         cin >> a;
-        v.push_back(a);
+        v.push(a);
     }
     sorts(v);
-    for (int i = 0; i < n; i++)
-    {
-        cout << v[i] << " ";
-    }
-    cout << endl;
+    print(v);
 }
