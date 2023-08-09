@@ -16,19 +16,21 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-ll powermathod(ll base, ll power)
+int count(int n)
 {
-    if (power == 0)
-        return 1;
-    return base * powermathod(base, power - 1);
+    if (n == 0)
+    {
+        return 0;
+    }
+    // first time he call recursive function then he will find first digit then he  divided the number
+    return ((n % 10) + count(n / 10));
 }
 int main()
 {
     faster;
-    ll base, power;
-    cin >> base;
-    cin >> power;
-    cout << powermathod(base, power) << endl;
-
+    int s, sum = 0;
+    cin >> s;
+    sum += count(s);
+    cout << sum << endl;
     return 0;
 }

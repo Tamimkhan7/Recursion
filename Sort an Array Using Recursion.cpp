@@ -11,7 +11,7 @@ using namespace __gnu_pbds;
 #define PI acos(-1.0)
 #define all(x) x.begin(), x.end()
 #define nl '\n'
-#define mod 1000000007
+#define mod 10000000070.
 typedef long long int ll;
 typedef unsigned long long int llu;
 void inserts(vector<int> &v, int temp)
@@ -21,8 +21,11 @@ void inserts(vector<int> &v, int temp)
         v.push_back(temp);
         return;
     }
+    // cout << v.size() << endl;
     int val = v[v.size() - 1];
     v.pop_back();
+    cout << temp << endl;
+    // cout << val << endl;
     inserts(v, temp);
     v.push_back(val);
 }
@@ -33,7 +36,6 @@ void sorts(vector<int> &v)
     int temp = v[v.size() - 1];
     v.pop_back();
     sorts(v);
-
     inserts(v, temp);
 }
 int main()
@@ -49,6 +51,7 @@ int main()
         v.push_back(a);
     }
     sorts(v);
+    cout << endl;
     for (int i = 0; i < n; i++)
     {
         cout << v[i] << " ";

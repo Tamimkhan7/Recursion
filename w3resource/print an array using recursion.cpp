@@ -16,19 +16,27 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-ll powermathod(ll base, ll power)
+void print(int arr[], int l, int n)
 {
-    if (power == 0)
-        return 1;
-    return base * powermathod(base, power - 1);
+    if (n == l)
+    {
+        return;
+    }
+    cout << arr[l] << " ";
+    print(arr, l + 1, n);
 }
 int main()
 {
     faster;
-    ll base, power;
-    cin >> base;
-    cin >> power;
-    cout << powermathod(base, power) << endl;
-
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cout << "element - " << i << " : ";
+        cin >> arr[i];
+        cout << arr[i] << endl;
+    }
+    print(arr, 0, n);
     return 0;
 }
