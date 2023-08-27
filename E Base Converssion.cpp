@@ -16,30 +16,32 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-int solve(int n, int arr[])
+void print(vector<int> &v)
 {
-    int sum;
-    if (n == 1)
-    {
-        return 0;
-    }
-    solve(n - 1, arr);
-    sum = arr[n];
-    cout << sum << endl;
-    return sum;
+    for (auto it : v)
+        cout << it;
+}
+void solve(int n)
+{
+    vector<int> v;
+    if (n == 0)
+        return;
+    int c = n % 2;
+    v.push_back(c);
+    solve(n /= 2);
+    print(v);
 }
 int main()
 {
     faster;
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
-    int res = solve(n, arr);
-    int sum = 0;
-    sum += res;
-    cout << sum << endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        solve(n);
+        cout << endl;
+    }
     return 0;
 }

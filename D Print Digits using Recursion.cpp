@@ -16,30 +16,27 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-int solve(int n, int arr[])
+int solve(string s, int n)
 {
-    int sum;
-    if (n == 1)
-    {
+    if (n == -1)
         return 0;
-    }
-    solve(n - 1, arr);
-    sum = arr[n];
-    cout << sum << endl;
-    return sum;
+    solve(s, n - 1);
+    return s[n];
 }
 int main()
 {
     faster;
-    int n;
-    cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
-    int res = solve(n, arr);
-    int sum = 0;
-    sum += res;
-    cout << sum << endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        string s;
+        cin >> s;
+        int len = s.size();
+        int res = solve(s, len);
+        for (int i = 0; i < len; i++)
+            cout << s[i] << " ";
+        cout << endl;
+    }
     return 0;
 }
