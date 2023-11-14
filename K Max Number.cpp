@@ -18,13 +18,13 @@ typedef unsigned long long int llu;
 #define rc ((n * 2) + 1)
 int solve(int arr[], int n)
 {
-    int sum;
-    if (n == 1)
-    {
+    int maxi = arr[0];
+    if (n == -1)
         return 0;
-    }
-
-    return solve(arr, (n - 1));
+    if (maxi < arr[n])
+        maxi = arr[n];
+    solve(arr, n - 1);
+    return maxi;
 }
 int main()
 {
@@ -34,9 +34,8 @@ int main()
     int arr[n];
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-
-    int res = solve(arr, n);
-
+    int maxi = arr[0];
+    int res = solve(arr, n - 1);
     cout << res << endl;
     return 0;
 }

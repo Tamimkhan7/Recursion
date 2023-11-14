@@ -16,15 +16,15 @@ typedef unsigned long long int llu;
 #define len(a) sizeof(a)
 #define lc (n * 2)
 #define rc ((n * 2) + 1)
-int solve(int arr[], int n)
+void solve(int n, int arr[])
 {
-    int sum;
-    if (n == 1)
+    if (n % 2 == 0)
     {
-        return 0;
+        cout << arr[n] << " ";
     }
-
-    return solve(arr, (n - 1));
+    if (n == 0)
+        return;
+    solve(n - 1, arr);
 }
 int main()
 {
@@ -34,9 +34,6 @@ int main()
     int arr[n];
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-
-    int res = solve(arr, n);
-
-    cout << res << endl;
+    solve(n - 1, arr);
     return 0;
 }

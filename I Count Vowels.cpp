@@ -19,7 +19,7 @@ typedef unsigned long long int llu;
 void pr(vector<int> &vv, int k)
 {
     auto p = count(vv.begin(), vv.end(), 1);
-    cout << p << endl;
+    // cout << p << endl;
 }
 void print(vector<int> &v, int k)
 {
@@ -29,15 +29,15 @@ void print(vector<int> &v, int k)
         if (v[i] == 1)
         {
             k++;
+            cout << k;
             vv.push_back(k);
         }
     }
- 
+
     pr(vv, k);
 }
 void solve(string s, int n, int c)
 {
-
     vector<int> v;
     if (n == -1)
         return;
